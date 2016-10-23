@@ -2,6 +2,7 @@ package de.jformchecker.spring.forms;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,7 +18,7 @@ public class ExampleBean {
 	@Label(text="Die Checkbox")
 	boolean optin;
 	
-	
+	@Min(18)
 	int age;
 	
 	LocalDate birthday = LocalDate.of(1978, 6, 17);
