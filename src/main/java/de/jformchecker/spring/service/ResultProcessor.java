@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import de.jformchecker.FormChecker;
+import de.jformchecker.utils.BeanUtils;
 import de.jformchecker.utils.Utils;
 
 @Service
@@ -18,7 +19,7 @@ public class ResultProcessor {
 		if (fc.isValid()) {
 			ExampleBean bean = new ExampleBean();
 			try {
-				Utils.fillBean(fc.getForm().getElements(), bean);
+				BeanUtils.fillBean(fc.getForm().getElements(), bean);
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 				e.printStackTrace();
 			}

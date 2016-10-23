@@ -19,7 +19,6 @@ import de.jformchecker.adapter.FC;
 import de.jformchecker.spring.forms.ExampleBean;
 import de.jformchecker.spring.service.FormCheckerService;
 import de.jformchecker.utils.BeanUtils;
-import de.jformchecker.utils.Utils;
 
 /**
  * Testing Bean-Validation struff
@@ -49,7 +48,7 @@ public class BeanValidationController {
 		if (fc.isOk()) {
 			ExampleBean resultBean = new ExampleBean("", "");
 			try {
-				Utils.fillBean(fc.getFcInstance().getForm().getElements(), resultBean);
+				BeanUtils.fillBean(fc.getFcInstance().getForm().getElements(), resultBean);
 				System.err.println("Resulted Bean: " + resultBean.getBirthday());
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e1) {
 				// TODO Auto-generated catch block

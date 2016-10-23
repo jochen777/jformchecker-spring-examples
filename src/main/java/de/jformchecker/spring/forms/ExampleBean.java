@@ -18,6 +18,8 @@ public class ExampleBean {
 	boolean optin;
 	
 	
+	int age;
+	
 	LocalDate birthday = LocalDate.of(1978, 6, 17);
 
 	
@@ -69,6 +71,16 @@ public class ExampleBean {
 
 	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
+	}
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
 	
