@@ -48,7 +48,7 @@ public class BeanValidationController {
 		if (fc.isOk()) {
 			ExampleBean resultBean = new ExampleBean("", "");
 			try {
-				BeanUtils.fillBean(fc.getFcInstance().getForm().getElements(), resultBean);
+				BeanUtils.fillBean(fc.getFcInstance().getForm(), resultBean);
 				System.err.println("Resulted Bean: " + resultBean.getBirthday());
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e1) {
 				// TODO Auto-generated catch block

@@ -19,7 +19,7 @@ public class ResultProcessor {
 		if (fc.isValid()) {
 			ExampleBean bean = new ExampleBean();
 			try {
-				BeanUtils.fillBean(fc.getForm().getElements(), bean);
+				BeanUtils.fillBean(fc.getForm(), bean);
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 				e.printStackTrace();
 			}

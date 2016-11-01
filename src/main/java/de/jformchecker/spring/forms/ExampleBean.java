@@ -6,9 +6,13 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import de.jformchecker.FormCheckerForm;
+import de.jformchecker.elements.HTMLSnippet;
+import de.jformchecker.elements.IgnoreFormElement;
 import de.jformchecker.elements.Label;
+import de.jformchecker.utils.FormCheckerBean;
 
-public class ExampleBean {
+public class ExampleBean implements FormCheckerBean{
 
 	@NotNull
 	@Label(text="Der Vorname")
@@ -19,6 +23,7 @@ public class ExampleBean {
 	boolean optin;
 	
 	@Min(18)
+	@Label(text="Dein Alter")
 	int age;
 	
 	LocalDate birthday = LocalDate.of(1978, 6, 17);
@@ -27,6 +32,9 @@ public class ExampleBean {
 	@Size(min = 2, max = 3)
 	String lastname;
 
+	@IgnoreFormElement
+	String checksum;
+	
 
 	public ExampleBean(String firstname, String lastname) {
 		super();
@@ -82,6 +90,30 @@ public class ExampleBean {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+
+	public String getChecksum() {
+		return checksum;
+	}
+
+
+	public void setChecksum(String checksum) {
+		this.checksum = checksum;
+	}
+
+
+	@Override
+	public void preRun(FormCheckerForm form) {
+		form.
+		add(HTMLSnippet.build("headline").setHTML("<h1>Headline</h1>"));
+	}
+
+
+	@Override
+	public void postRun(FormCheckerForm form) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
