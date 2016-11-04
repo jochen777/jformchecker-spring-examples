@@ -36,10 +36,10 @@ public class BeanValidationController {
 		
 		ExampleBean e = new ExampleBean("Jochen", "Pier");
 		
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		Validator validator = factory.getValidator();
-		Set<ConstraintViolation<ExampleBean>> constraintViolations =
-                validator.validate( e );
+//		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+//		Validator validator = factory.getValidator();
+//		Set<ConstraintViolation<ExampleBean>> constraintViolations =
+//                validator.validate( e );
 		
 		
 		FormCheckerForm f = BeanUtils.fromBean(e);

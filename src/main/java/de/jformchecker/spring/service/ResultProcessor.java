@@ -25,7 +25,7 @@ public class ResultProcessor {
 			}
 			log.debug("bean:" + bean);
 			log.debug("--------------");
-			log.debug(Utils.getDebugOutput(fc.getForm().getElementsAsMap()));
+			log.debug(Utils.getDebugOutput(fc.getForm()));
 		}
 	}
 }
