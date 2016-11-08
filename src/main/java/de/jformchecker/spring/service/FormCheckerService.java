@@ -19,4 +19,9 @@ public class FormCheckerService {
 	public FC provideFormChecker(HttpServletRequest request, FormCheckerForm formCheckerForm) {
 		return FC.secure(config, request, formCheckerForm);
 	}
+
+	public FC provideFormCheckerFromBean(Object bean, FormCheckerForm formCheckerForm) {
+		return FC.simpleFromBean(config, bean, formCheckerForm);
+	}
+
 }
