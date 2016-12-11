@@ -10,11 +10,11 @@ public class ExampleFormShort extends FormCheckerForm {
 		add(TextInput.build("firstname").setDescription("Your Firstname").setPreSetValue("Peter").setRequired()
 				.setCriterias(Criteria.accept("Peter", "Max"), Criteria.maxLength(10)));
 
-		add(TextInput.build("lastname").setPlaceholerText("Mustermann").setDescription("Your Lastname")
+		add(TextInput.build("lastname").setDescription("Your Lastname")
 				.setHelpText("This is an example Helptext for describing this lastname field").setPreSetValue("p") // this
 																													// will
 																													// fail
-				.setCriterias(Criteria.accept("Pan", "Mustermann")));
+				.setCriterias(Criteria.accept("Pan", "Mustermann")).setPlaceholerText("Mustermann"));
 
 		disableHtml5Validation();
 
