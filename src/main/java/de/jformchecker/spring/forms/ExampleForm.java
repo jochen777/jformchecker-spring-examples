@@ -19,6 +19,9 @@ import de.jformchecker.elements.TextInput;
 public class ExampleForm extends FormCheckerForm {
 
 	public void init() {
+		add(TextInput.build("textInput").setDescription("SampleTextInput").setPreSetValue("Peter"));
+
+		
 		add(TextInput.build("firstname").setDescription("Your Firstname").setPreSetValue("Peter").setRequired()
 				.setCriterias(Criteria.accept("Peter", "Max"), Criteria.maxLength(10)));
 
