@@ -14,6 +14,9 @@ import de.jformchecker.utils.FormCheckerBean;
 
 public class ExampleBean implements FormCheckerBean{
 
+	@IgnoreFormElement
+	static int i = 0;
+	
 	@NotNull
 	@Label(text="Der Vorname")
 	String firstname;
@@ -25,6 +28,7 @@ public class ExampleBean implements FormCheckerBean{
 	@Min(18)
 	@Label(text="Dein Alter")
 	int age;
+	
 	
 	LocalDate birthday = LocalDate.of(1978, 6, 17);
 
@@ -38,6 +42,8 @@ public class ExampleBean implements FormCheckerBean{
 
 	public ExampleBean(String firstname, String lastname) {
 		super();
+		i++;
+		System.err.println("INstance:" + i);
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}

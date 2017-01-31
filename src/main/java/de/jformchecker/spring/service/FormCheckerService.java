@@ -1,5 +1,6 @@
 package de.jformchecker.spring.service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import de.jformchecker.FormCheckerConfig;
 import de.jformchecker.FormCheckerForm;
 import de.jformchecker.adapter.FC;
+import de.jformchecker.spring.forms.ExampleBean;
+import de.jformchecker.utils.BeanUtils;
 
 @Service
 public class FormCheckerService {
@@ -28,6 +31,21 @@ public class FormCheckerService {
 	
 	public FC provideFormCheckerFromBean(Object bean, FormCheckerForm formCheckerForm) {
 		return FC.simpleFromBean(config, bean, formCheckerForm);
+	}
+
+	// create a formchecker-instance out of an object and fill this object
+	public FC buildAndProcess(Map<String, String> params, Object e) {
+		FC fc = provideSimpleFormChecker(params, 
+				BeanUtils.fromBean(e));
+		
+		try {
+			BeanUtils.fillBean(fc.getFcInstance().getForm(), e);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+				
+		return fc;
 	}
 
 }
