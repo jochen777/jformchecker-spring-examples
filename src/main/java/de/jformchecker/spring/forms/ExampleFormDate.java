@@ -3,6 +3,7 @@ package de.jformchecker.spring.forms;
 
 import de.jformchecker.FormCheckerForm;
 import de.jformchecker.criteria.Criteria;
+import de.jformchecker.elements.CheckboxInput;
 import de.jformchecker.elements.DateInputSelectCompound;
 import de.jformchecker.elements.LongTextInput;
 import de.jformchecker.elements.TextInput;
@@ -17,6 +18,7 @@ public class ExampleFormDate extends FormCheckerForm {
 
 		add(LongTextInput.build("description").setRequired().setDescription("Your Description"));
 
+		add(CheckboxInput.build("agb").setRequired().setDescription("AGB"));
 
 		this.disableHtml5Validation();
 	}
