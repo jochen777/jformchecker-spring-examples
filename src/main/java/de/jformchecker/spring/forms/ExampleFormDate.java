@@ -6,6 +6,7 @@ import de.jformchecker.criteria.Criteria;
 import de.jformchecker.elements.CheckboxInput;
 import de.jformchecker.elements.DateInputSelectCompound;
 import de.jformchecker.elements.LongTextInput;
+import de.jformchecker.elements.RadioInput;
 import de.jformchecker.elements.TextInput;
 
 public class ExampleFormDate extends FormCheckerForm {
@@ -16,9 +17,11 @@ public class ExampleFormDate extends FormCheckerForm {
 
 		add(TextInput.build("email").setDescription("Your Email").setCriterias(Criteria.emailAddress()));
 
-		add(LongTextInput.build("description").setRequired().setDescription("Your Description"));
+		add(LongTextInput.build("description").setRequired().setDescription("Your Description!"));
 
 		add(CheckboxInput.build("agb").setRequired().setDescription("AGB"));
+		
+		add(RadioInput.build ("anrede", new String[]{"a","b"}, new String[]{"peter", "pater"}));
 
 		this.disableHtml5Validation();
 	}
