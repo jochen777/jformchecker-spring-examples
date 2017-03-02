@@ -60,6 +60,8 @@ public class ExampleForm extends FormCheckerForm {
 
 		addFormValidator(new PasswordFormValidator());
 
+		this.setId("example");
+		
 		this.disableHtml5Validation();
 
 	}
