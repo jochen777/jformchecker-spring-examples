@@ -42,7 +42,7 @@ public class BootstrapController {
 		fc1.setConfig(config);
 		fc1.run();
 
-		return new ModelAndView("bootstrap_non_generic", "view", fc1.getView());
+		return new ModelAndView("bootstrap_non_generic", "fc", fc1.getView());
 
 	}
 
@@ -58,7 +58,7 @@ public class BootstrapController {
 		fc1.setConfig(config);
 		fc1.run();
 
-		return new ModelAndView("bootstrap", "view", fc1.getView());
-
+		ModelAndView mv = new ModelAndView("bootstrap", "view", fc1.getView());
+		return mv;
 	}
 }

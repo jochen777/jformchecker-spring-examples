@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="fcport" content="width=device-width, initial-scale=1">
 	<title>Formchecker</title>
 	
 	<link rel="stylesheet"
@@ -30,55 +30,60 @@
 </head>
 <body>
 
-{% macro input(name, view) %}
-<div class="form-group {{ view.isError(name)?"has-error": "has-success" }} ">
-{% if view.isError(name) %}
-<span style="color: red">{{view.error(name) }}</span>
+{% macro input_manual(name, fc) %}
+<div class="form-group {{ fc.isError(name)?"has-error": "has-success" }} ">
+{% if fc.isError(name) %}
+<span style="color: red">{{fc.error(name) }}</span>
 {% endif %}
-{{view.label(name) | raw }}
+{{fc.label(name) | raw }}
 <div class="col-sm-10">
-{{view.input(name)|raw}}
-{% if view.help(name) is not empty %}
-<span id="helpBlock_{{name}}" class="help-block">{{ view.help(name) }}</span>
+{{fc.input(name)|raw}}
+{% if fc.help(name) is not empty %}
+<span id="helpBlock_{{name}}" class="help-block">{{ fc.help(name) }}</span>
 {% endif %}
 </div>
 </div>
 {% endmacro %}
 
+{% macro input(name, fc) %}
+{{ fc.element(name) | raw }}
+{% endmacro %}
+
+
 <div style="width:500px; margin-left:50px">
 <h1>Hello World</h1>
 <p>Non Generic form</p>
-{{view.start|raw}}
+{{fc.start|raw}}
 
-{% if view.isError("textInput") %}
-<span style="color: red">{{view.error("textInput") }}</span>
+{% if fc.isError("textInput") %}
+<span style="color: red">{{fc.error("textInput") }}</span>
 {% endif %}
-{{view.label("textInput", {"onclick":"alert('hello')"})|raw}}
-{{view.input("textInput")|raw}}
-{{view.help("textInput")|raw}}
+{{fc.label("textInput", {"onclick":"alert('hello')"})|raw}}
+{{fc.input("textInput")|raw}}
+{{fc.help("textInput")|raw}}
 <br/>
-{% if view.isError("firstname") %}
-<span style="color: red">{{view.error("firstname") }}</span>
+{% if fc.isError("firstname") %}
+<span style="color: red">{{fc.error("firstname") }}</span>
 {% endif %}
-{{view.label("firstname")|raw}}
-{{view.input("firstname")|raw}}
+{{fc.label("firstname")|raw}}
+{{fc.input("firstname")|raw}}
 
-{{ input("lastname", view) }}
-{{ input("middelname", view) }}
-{{ input("headline", view) }}
-{{ input("hidden", view) }}
-{{ input("btn", view) }}
-{{ input("date", view) }}
-{{ input("date2", view) }}
-{{ input("password1", view) }}
-{{ input("password2", view) }}
-{{ input("description", view) }}
-{{ input("rdio", view) }}
-{{ input("select", view) }}
-{{ input("check", view) }}
+{{ input("lastname", fc) }}
+{{ input("middelname", fc) }}
+{{ input("headline", fc) }}
+{{ input("hidden", fc) }}
+{{ input("btn", fc) }}
+{{ input("date", fc) }}
+{{ input("date2", fc) }}
+{{ input("password1", fc) }}
+{{ input("password2", fc) }}
+{{ input("description", fc) }}
+{{ input("rdio", fc) }}
+{{ input("select", fc) }}
+{{ input("check", fc) }}
 
-{{view.submit|raw}}
-{{view.end|raw}}
+{{fc.submit|raw}}
+{{fc.end|raw}}
 </div>
 
 
