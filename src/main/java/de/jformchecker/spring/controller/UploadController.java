@@ -34,7 +34,7 @@ public class UploadController {
 	@GetMapping("/upload")
 	public ModelAndView upload(HttpServletRequest request) {
 		
-		final FormChecker fc = FormChecker.build("id", ServletRequestAdapter.of(request), new ExampleFormUpload())
+		final FormChecker fc = FormChecker.build(ServletRequestAdapter.of(request), new ExampleFormUpload())
 				.setFormBuilder(new TwoColumnBootstrapFormBuilder()).run();
 		resultProcessor.processResult(fc);
 		return new ModelAndView("bootstrap", "fc", fc);
@@ -43,7 +43,7 @@ public class UploadController {
 	@PostMapping("/upload")
 	public ModelAndView uploadPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		final FormChecker fc = FormChecker.build("id", ServletRequestAdapter.of(request), new ExampleFormUpload())
+		final FormChecker fc = FormChecker.build(ServletRequestAdapter.of(request), new ExampleFormUpload())
 				.setFormBuilder(new TwoColumnBootstrapFormBuilder()).run();
 		if (fc.isValidAndNotFirstRun()) {
 			processRequest(request, response);

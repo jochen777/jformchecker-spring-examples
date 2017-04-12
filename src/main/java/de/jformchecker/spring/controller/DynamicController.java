@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import de.jformchecker.FormChecker;
 import de.jformchecker.adapter.request.ServletRequestAdapter;
 import de.jformchecker.elements.TextInput;
-import de.jformchecker.spring.forms.ExampleForm;
+import de.jformchecker.spring.forms.RadiosForm;
 import de.jformchecker.spring.service.ResultProcessor;
 
 @Controller
@@ -22,11 +22,11 @@ public class DynamicController {
 	@RequestMapping("/dynamic")
 	public ModelAndView bootstrap(HttpServletRequest request) {
 		
-		ExampleForm form = new ExampleForm();
+		RadiosForm form = new RadiosForm();
 		if (request.getSession().getAttribute("add1") != null) {
 			form.add(TextInput.build("text").setDescription("Additional"));
 		}
-		FormChecker fc = FormChecker.build("id", ServletRequestAdapter.of(request), form).run();
+		FormChecker fc = FormChecker.build(ServletRequestAdapter.of(request), form).run();
 		resultProcessor.processResult(fc);
 			if ("add".equals(fc.getValue("btn"))) {
 				request.getSession().setAttribute("add1", "add");

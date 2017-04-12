@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import de.jformchecker.adapter.FC;
 import de.jformchecker.criteria.ValidationResult;
 import de.jformchecker.elements.TextInput;
-import de.jformchecker.spring.forms.ExampleForm;
+import de.jformchecker.spring.forms.RadiosForm;
 import de.jformchecker.spring.service.FormCheckerService;
 
 @Controller
@@ -27,7 +27,7 @@ public class CustomValidationController {
 	@RequestMapping("/customval")
 	public ModelAndView customVal(@RequestParam Map<String, String> params) {
 		
-		ExampleForm form = new ExampleForm();
+		RadiosForm form = new RadiosForm();
 		TextInput ti = (TextInput) form.getElement("textInput");
 		ti.addCriteria(elem -> {
 			if (!elem.getValue().equals("horst")) {

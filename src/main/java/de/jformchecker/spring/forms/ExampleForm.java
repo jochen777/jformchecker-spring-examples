@@ -6,8 +6,9 @@ import de.jformchecker.FormCheckerForm;
 import de.jformchecker.criteria.Criteria;
 import de.jformchecker.elements.ButtonInput;
 import de.jformchecker.elements.CheckboxInput;
-import de.jformchecker.elements.DateInput;
 import de.jformchecker.elements.DateInputCompound;
+import de.jformchecker.elements.DateInputSelectCompound;
+import de.jformchecker.elements.DateInputSelectCompound.YearRange;
 import de.jformchecker.elements.HTMLSnippet;
 import de.jformchecker.elements.HiddenInput;
 import de.jformchecker.elements.LongTextInput;
@@ -23,9 +24,10 @@ public class ExampleForm extends FormCheckerForm {
 
 		
 		add(TextInput.build("firstname").setDescription("Your Firstname").setPreSetValue("Peter").setRequired()
+				.setHelpText("Andreas")
 				.setCriterias(Criteria.accept("Peter", "Max"), Criteria.maxLength(10)));
 
-		add(TextInput.build("lastname").setPlaceholerText("Mustermann").setDescription("Your Lastname")
+		add(ShortTextInput.build("lastname").setPlaceholerText("Mustermann!").setDescription("Your Lastname")
 				.setHelpText("This is an example Helptext for describing this lastname field")
 				.setCriterias(Criteria.accept("Pan", "Mustermann")));
 
@@ -37,7 +39,7 @@ public class ExampleForm extends FormCheckerForm {
 
 		add(ButtonInput.build("btn").setButtonText("Add...").setPreSetValue("add"));
 
-		add(DateInput.build("date").setDescription("Birthday"));
+		add(DateInputSelectCompound.build("date", YearRange.aroundNow(5)).setDescription("Birthday"));
 
 		add(DateInputCompound.build("date2").setDescription("Mein Tag"));
 

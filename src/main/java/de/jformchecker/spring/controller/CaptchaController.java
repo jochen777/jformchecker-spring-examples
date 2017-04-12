@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +22,7 @@ public class CaptchaController {
 	public ModelAndView bootstrap(HttpServletRequest request) {
 		
 		// TODO: Make recaptcha working!
-		FormChecker fc = FormChecker.build("id", ServletRequestAdapter.of(request), new ExampleFormCaptcha()).run();
+		FormChecker fc = FormChecker.build(ServletRequestAdapter.of(request), new ExampleFormCaptcha()).run();
 
 		resultProcessor.processResult(fc);
 		return new ModelAndView("bootstrap", "fc", fc);

@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.jformchecker.FormCheckerForm;
 import de.jformchecker.adapter.FC;
-import de.jformchecker.elements.Label;
 import de.jformchecker.spring.forms.ExampleBean;
 import de.jformchecker.spring.service.FormCheckerService;
 import de.jformchecker.utils.BeanUtils;

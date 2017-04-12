@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import de.jformchecker.FormCheckerConfig;
-import de.jformchecker.themes.TwoColumnBootstrapFormBuilder;
+import de.jformchecker.themes.BasicBootstrapFormBuilder;
 
 @Configuration
 public class JFormcheckerConfig {
@@ -17,7 +17,7 @@ public class JFormcheckerConfig {
 	@Bean
 	public FormCheckerConfig getConfig() {
 		return new FormCheckerConfig(key -> messageSource.getMessage(key, null, LocaleContextHolder.getLocale()) 
-				, new TwoColumnBootstrapFormBuilder());
+				, new BasicBootstrapFormBuilder());
 		
 	}
 	

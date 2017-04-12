@@ -6,19 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.jformchecker.FormChecker;
 import de.jformchecker.FormCheckerConfig;
-import de.jformchecker.adapter.FC;
 import de.jformchecker.spring.forms.ExampleForm;
-import de.jformchecker.spring.forms.ExampleFormDate;
+import de.jformchecker.spring.forms.RadiosForm;
 import de.jformchecker.spring.service.FormCheckerService;
-import de.jformchecker.themes.BasicBootstrapFormBuilder;
 
 @Controller
 public class BootstrapController {
@@ -42,7 +38,7 @@ public class BootstrapController {
 		fc1.setConfig(config);
 		fc1.run();
 
-		return new ModelAndView("bootstrap_non_generic", "fc", fc1.getView());
+		return new ModelAndView("bootstrap", "fc", fc1.getView());
 
 	}
 
@@ -54,7 +50,7 @@ public class BootstrapController {
 		// if (fc.isOk()) {
 		// log.debug("Firstname: " + fc.getValueFor("firstname"));
 		// }
-		FormChecker fc1 = FormChecker.build((k) -> params.get(k), new ExampleForm());
+		FormChecker fc1 = FormChecker.build((k) -> params.get(k), new RadiosForm());
 		fc1.setConfig(config);
 		fc1.run();
 

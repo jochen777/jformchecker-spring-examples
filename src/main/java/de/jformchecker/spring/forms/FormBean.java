@@ -7,7 +7,6 @@ import javax.validation.constraints.Min;
 import de.jformchecker.FormCheckerForm;
 import de.jformchecker.adapter.BeanAdapter;
 import de.jformchecker.elements.CheckboxInput;
-import de.jformchecker.elements.HTMLSnippet;
 import de.jformchecker.elements.Label;
 import de.jformchecker.elements.SelectInput;
 import de.jformchecker.fieldmarkers.FieldType;
@@ -64,7 +63,6 @@ public class FormBean extends BeanAdapter implements FormCheckerBean{
 	@Override
 	public void postRun(FormCheckerForm form) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	

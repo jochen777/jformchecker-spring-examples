@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import de.jformchecker.FormCheckerConfig;
 import de.jformchecker.FormCheckerForm;
 import de.jformchecker.adapter.FC;
-import de.jformchecker.spring.forms.ExampleBean;
 import de.jformchecker.utils.BeanUtils;
 
 @Service

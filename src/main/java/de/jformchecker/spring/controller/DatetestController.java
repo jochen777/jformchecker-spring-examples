@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.jformchecker.adapter.FC;
 import de.jformchecker.elements.CheckboxInput;
-import de.jformchecker.spring.forms.ExampleForm;
 import de.jformchecker.spring.forms.ExampleFormDate;
 import de.jformchecker.spring.service.FormCheckerService;
 
