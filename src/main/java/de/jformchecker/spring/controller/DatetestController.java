@@ -22,15 +22,12 @@ public class DatetestController {
 
 
 	@Autowired
-	FormCheckerConfig config;	
-	
-	@Autowired
 	FormCheckerService fcService;
 	
 	@RequestMapping("/datetest")
 	public ModelAndView bootstrap(@RequestParam Map<String, String> params) {
 		
-		FC fc = fcService.provideSimpleFormChecker(params, new ExampleFormDate(config.getProperties())); 
+		FC fc = fcService.provideSimpleFormChecker(params, new ExampleFormDate()); 
 		if (fc.isOk()) {
 			log.debug("Birthdate: " + fc.getValueFor("birthdate"));
 			log.debug("agb: " + fc.getValueFor("agb"));

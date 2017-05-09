@@ -11,16 +11,13 @@ import de.jformchecker.elements.DateInputSelectCompound.YearRange;
 import de.jformchecker.elements.LongTextInput;
 import de.jformchecker.elements.RadioInput;
 import de.jformchecker.elements.TextInput;
-import de.jformchecker.message.MessageSource;
 
 public class ExampleFormDate extends FormCheckerForm {
 	
-	MessageSource messageSource;
 	DateInputSelectCompound birthday;
 	
-	public ExampleFormDate(MessageSource ms){
-		messageSource = ms;
-		birthday = DateInputSelectCompound.build("birthdate", 2000, 2019, messageSource).setDescription("Birthdate");
+	public ExampleFormDate(){
+		birthday = DateInputSelectCompound.build("birthdate", 2000, 2019).setDescription("Birthdate");
 	}
 
 	
@@ -38,7 +35,7 @@ public class ExampleFormDate extends FormCheckerForm {
 		add(CheckboxInput.build("agb").setDescription("AGB"));
 		
 		add(RadioInput.build ("anrede", new String[]{"a","b"}, new String[]{"peter", "pater"}));
-		add(DateInputSelectCompound.build("horst", YearRange.birthday(), messageSource));
+		add(DateInputSelectCompound.build("horst", YearRange.birthday()));
 
 		this.disableHtml5Validation();
 	}
