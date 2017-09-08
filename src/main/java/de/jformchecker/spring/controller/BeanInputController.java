@@ -21,12 +21,13 @@ public class BeanInputController {
 	@Autowired
 	FormCheckerService fcService;
 	
+	// Warning: This does not work at the moment!
 	@RequestMapping("/fromBean")
-	public ModelAndView bootstrap(FormBean formBean, BindingResult result) {
+	public ModelAndView bootstrap(FormBean formBean, BindingResult result, String submittedValue) {
 		
 		log.debug("Height: " + formBean.getHeight());
 		
-		FC fc = fcService.provideFormCheckerFromBean(formBean, BeanUtils.fromBean(formBean)); 
+		FC fc = fcService.provideFormCheckerFromBean(formBean, BeanUtils.fromBean(formBean), submittedValue); 
 		if (fc.isOk()) {
 			log.debug("Firstname: " + fc.getValueFor("height"));
 		}

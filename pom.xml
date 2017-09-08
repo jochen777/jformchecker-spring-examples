@@ -49,7 +49,7 @@
     <dependency>
       <groupId>de.cyclon-softworx</groupId>
       <artifactId>jformchecker-integration</artifactId>
-      <version>0.1.12</version>
+      <version>0.1.15</version>
     </dependency>
 
 	</dependencies>

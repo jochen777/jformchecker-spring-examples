@@ -1,6 +1,8 @@
 package de.jformchecker.spring.forms;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import de.jformchecker.FormCheckerForm;
 import de.jformchecker.criteria.Criteria;
@@ -15,13 +17,14 @@ import de.jformchecker.elements.LongTextInput;
 import de.jformchecker.elements.PasswordInput;
 import de.jformchecker.elements.RadioInput;
 import de.jformchecker.elements.SelectInput;
+import de.jformchecker.elements.SelectInput.SelectInputEntry;
+import de.jformchecker.elements.SelectInput.SelectInputEntryGroup;
 import de.jformchecker.elements.TextInput;
 
 public class ExampleForm extends FormCheckerForm {
 
 	public void init() {
 		add(TextInput.build("textInput").setDescription("SampleTextInput").setPreSetValue("Peter"));
-
 		
 		add(TextInput.build("firstname").setDescription("Your Firstname").setPreSetValue("Peter").setRequired()
 				.setHelpText("Andreas")
@@ -40,14 +43,14 @@ public class ExampleForm extends FormCheckerForm {
 		add(ButtonInput.build("btn").setButtonText("Add...").setPreSetValue("add"));
 
 		add(DateInputSelectCompound.build("date", YearRange.aroundNow(5)).setDescription("Birthday"));
-
+		DateInputSelectCompound b = DateInputSelectCompound.build("ksdlf", YearRange.birthday());
 		add(DateInputCompound.build("date2").setDescription("Mein Tag"));
 
 		add(PasswordInput.build("password1").setRequired().setDescription("Password"));
 
 		add(PasswordInput.build("password2").setRequired().setDescription("Repeat password"));
 
-		add(LongTextInput.build("description").setRequired().setDescription("Your Description"));
+		add(LongTextInput.build("description").setPlaceholerText("Placeholder").setRequired().setDescription("Your Description"));
 
 		// RFE: simple map-builder
 		LinkedHashMap<String, String> radioEntries = createRadioMap();
@@ -60,14 +63,39 @@ public class ExampleForm extends FormCheckerForm {
 
 		add(CheckboxInput.build("check").setDescription("I order everything"));
 
+		// dropdown with groups
+		add(createSelectWithGroups());
+
+		
 		addFormValidator(new PasswordFormValidator());
 
 		this.setId("example");
+		//this.hideSubmitButton();
 		
 		this.disableHtml5Validation();
 
 	}
 
+
+	private SelectInput createSelectWithGroups() {
+		SelectInput groupSelect = SelectInput.build("groupdown");
+		
+		
+		List<SelectInputEntryGroup> groups = new ArrayList<>();
+		SelectInputEntryGroup group = groupSelect.generateEntryGroup("Group1");
+		group.addSelectInputEntry(groupSelect.generateEntry("1", "One"));
+		group.addSelectInputEntry(groupSelect.generateEntry("2", "Two"));
+		groups.add(group);
+		SelectInputEntryGroup group2 = groupSelect.generateEntryGroup("Group2");
+		group2.addSelectInputEntry(groupSelect.generateEntry("3", "Three"));
+		group2.addSelectInputEntry(groupSelect.generateEntry("4", "Four"));
+		groups.add(group2);
+		
+		groupSelect.setGroups(groups);
+		return groupSelect;
+	}
+
+	
 	private LinkedHashMap<String, String> createSelectMap() {
 		LinkedHashMap<String, String> selectEntries = new LinkedHashMap<>();
 		selectEntries.put("green", "Green");

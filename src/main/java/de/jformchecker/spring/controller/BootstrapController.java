@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.jformchecker.FormChecker;
 import de.jformchecker.FormCheckerConfig;
+import de.jformchecker.message.MessageSource;
 import de.jformchecker.spring.forms.ExampleForm;
 import de.jformchecker.spring.forms.RadiosForm;
 import de.jformchecker.spring.service.FormCheckerService;
@@ -25,7 +26,7 @@ public class BootstrapController {
 	
 	@Autowired
 	FormCheckerConfig config;
-
+	
 	@RequestMapping("/bootstrap")
 	public ModelAndView bootstrap(@RequestParam Map<String, String> params) {
 

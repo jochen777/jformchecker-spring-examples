@@ -24,7 +24,6 @@ public class ExampleFormDate extends FormCheckerForm {
 	public void init() {
 
 		birthday.setPresetValue(LocalDate.now());
-		
 		add(birthday);
 
 		add(TextInput.build("email").setDescription("Your Email")

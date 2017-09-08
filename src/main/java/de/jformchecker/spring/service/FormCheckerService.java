@@ -28,8 +28,8 @@ public class FormCheckerService {
 	}
 
 	
-	public FC provideFormCheckerFromBean(Object bean, FormCheckerForm formCheckerForm) {
-		return FC.simpleFromBean(config, bean, formCheckerForm);
+	public FC provideFormCheckerFromBean(Object bean, FormCheckerForm formCheckerForm, String submitted) {
+		return FC.simpleFromBean(config, bean, formCheckerForm, submitted);
 	}
 
 	// create a formchecker-instance out of an object and fill this object
